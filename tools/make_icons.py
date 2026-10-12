@@ -16,7 +16,7 @@ INK = (43, 36, 24)
 BG = (20, 22, 31)
 
 
-def stone(draw, cx, cy, r, white):
+def stone(draw, cx, cy, r, color="black"):
     """Vẽ 1 quân cờ có bóng đổ và ánh sáng."""
     # bóng đổ
     sh = Image.new("RGBA", draw._image.size, (0, 0, 0, 0))
@@ -26,8 +26,12 @@ def stone(draw, cx, cy, r, white):
     sh = sh.filter(ImageFilter.GaussianBlur(r * 0.28))
     draw._image.alpha_composite(sh)
 
-    base = (246, 244, 236) if white else (30, 30, 36)
-    edge = (190, 185, 168) if white else (5, 5, 7)
+    if color == "red":
+        base = (229, 56, 42)
+        edge = (143, 19, 10)
+    else:
+        base = (30, 30, 36)
+        edge = (5, 5, 7)
     draw.ellipse((cx - r, cy - r, cx + r, cy + r), fill=base, outline=edge, width=2)
 
     # vùng sáng
@@ -35,7 +39,7 @@ def stone(draw, cx, cy, r, white):
     hd = ImageDraw.Draw(hl)
     hr = int(r * 0.62)
     hx, hy = int(cx - r * 0.28), int(cy - r * 0.30)
-    light = (255, 255, 255, 210) if white else (175, 175, 185, 190)
+    light = (255, 160, 142, 210) if color == "red" else (175, 175, 185, 190)
     hd.ellipse((hx - hr, hy - hr, hx + hr, hy + hr), fill=light)
     hl = hl.filter(ImageFilter.GaussianBlur(r * 0.30))
     draw._image.alpha_composite(hl)
@@ -63,11 +67,11 @@ def draw_board(img, board_rect, pad):
         p = inner[1] + i * step
         d.line((inner[0], p, inner[2], p), fill=INK, width=max(2, w // 110))
 
-    # 3 quân cờ theo đường chéo
+    # 3 quân cờ theo đường chéo: đen - đỏ - đen
     r = int(step * 0.40)
-    stone(d, int(inner[0] + step), int(inner[1] + step), r, white=False)
-    stone(d, int(inner[0] + 2 * step), int(inner[1] + 2 * step), r, white=True)
-    stone(d, int(inner[0] + 3 * step), int(inner[1] + 3 * step), r, white=False)
+    stone(d, int(inner[0] + step), int(inner[1] + step), r, color="black")
+    stone(d, int(inner[0] + 2 * step), int(inner[1] + 2 * step), r, color="red")
+    stone(d, int(inner[0] + 3 * step), int(inner[1] + 3 * step), r, color="black")
 
 
 def make_icon(size, maskable=False):

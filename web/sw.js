@@ -8,7 +8,7 @@
    (vd: v1 -> v2), nếu không người dùng sẽ vẫn thấy bản cũ do cache.
    Không cần đổi VERSION khi chỉ sửa nội dung file sw.js. */
 
-const VERSION = 'caro-online-v1';
+const VERSION = 'caro-online-v2';
 const STATIC_CACHE = VERSION + '-static';
 
 const PRECACHE = [

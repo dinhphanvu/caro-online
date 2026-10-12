@@ -101,8 +101,8 @@ body {
   box-shadow: 1px 2px 3px rgba(0, 0, 0, .45);
 }
 
-.bp.white {
-  background: radial-gradient(circle at 32% 28%, #fff, #f2efe4 65%, #c9c4b3);
+.bp.red {
+  background: radial-gradient(circle at 32% 28%, #ffa08e, #e5382a 55%, #8f130a);
   box-shadow: 1px 2px 3px rgba(0, 0, 0, .35);
 }
 
@@ -346,9 +346,9 @@ input[type=text]:focus {
   background: radial-gradient(circle at 32% 28%, #7d7d86, #050507);
 }
 
-.turn-dot.white {
-  background: radial-gradient(circle at 32% 28%, #fff, #c9c4b3);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, .3);
+.turn-dot.red {
+  background: radial-gradient(circle at 32% 28%, #ffa08e, #8f130a);
+  box-shadow: 0 0 0 1px rgba(229, 56, 42, .5);
 }
 
 /* scoreboard */
@@ -389,8 +389,8 @@ input[type=text]:focus {
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
-.stone-white {
-  background: radial-gradient(circle at 32% 28%, #fff, #f2efe4 65%, #c9c4b3);
+.stone-red {
+  background: radial-gradient(circle at 32% 28%, #ffa08e, #e5382a 55%, #8f130a);
   box-shadow: 1px 2px 4px rgba(0, 0, 0, .4);
 }
 
@@ -485,7 +485,9 @@ input[type=text]:focus {
 }
 
 .last-marker {
-  fill: #e0342c;
+  fill: #fff;
+  stroke: #1c1c1c;
+  stroke-width: 1;
   opacity: .95;
   pointer-events: none;
 }
@@ -499,7 +501,7 @@ input[type=text]:focus {
 }
 
 .win-line {
-  stroke: #e0342c;
+  stroke: #ffcf40;
   stroke-width: 6;
   stroke-linecap: round;
   opacity: .9;
@@ -508,7 +510,7 @@ input[type=text]:focus {
 }
 
 .win-glow {
-  fill: #e0342c;
+  fill: #ffcf40;
   opacity: .28;
   animation: winPulse 1.1s ease-in-out infinite;
   pointer-events: none;

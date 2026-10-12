@@ -165,7 +165,7 @@ function makeStone(color) {
   const body = document.createElementNS(SVG_NS, 'circle');
   body.setAttribute('r', STONE_R);
   body.setAttribute('class', 'body');
-  body.setAttribute('fill', color === 'black' ? 'url(#gradBlack)' : 'url(#gradWhite)');
+  body.setAttribute('fill', color === 'black' ? 'url(#gradBlack)' : 'url(#gradRed)');
   g.appendChild(body);
 
   return g;
@@ -510,7 +510,7 @@ function showGame() {
 }
 
 function colorName(color) {
-  return color === 'black' ? 'Đen' : 'Trắng';
+  return color === 'black' ? 'Đen' : 'Đỏ';
 }
 
 function myName() {
@@ -534,7 +534,7 @@ function updateUI() {
   const black = S.players.find((p) => p.color === 'black');
   const white = S.players.find((p) => p.color === 'white');
   el.nameBlack.textContent = black ? black.name : 'Đen';
-  el.nameWhite.textContent = white ? white.name : 'Trắng';
+  el.nameWhite.textContent = white ? white.name : 'Đỏ';
   el.scoreBlack.textContent = S.scores.black ?? 0;
   el.scoreWhite.textContent = S.scores.white ?? 0;
   el.scoreMid.textContent = `${S.scores.black ?? 0} : ${S.scores.white ?? 0}`;
@@ -575,7 +575,7 @@ function updateTurnBar() {
   }
   if (!S.turn) return;
 
-  dot.classList.add(S.turn);
+  dot.classList.add(S.turn === 'white' ? 'red' : 'black');
   if (S.turn === S.color) {
     el.turnBar.classList.add('my-turn');
     text.textContent = `Đến lượt bạn (${colorName(S.color)})`;
