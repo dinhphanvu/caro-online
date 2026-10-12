@@ -1,0 +1,10 @@
+# Render Blueprint — deploy Caro Online bằng 1 click.
+# Render tự đọc file này khi bạn chọn "New → Blueprint".
+services:
+  - type: web
+    name: caro-online
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python server.py"
+    autoDeploy: true
